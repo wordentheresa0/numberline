@@ -1,0 +1,9 @@
+.square {
+    background-image: url('https://www.americanoceans.org/wp-content/uploads/2023/06/spongebob-squarepants-1024x671.jpeg'); 
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    background-color: blue; 
+    border: 1px solid black; 
+  }
+  

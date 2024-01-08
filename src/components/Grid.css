@@ -1,0 +1,9 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(10, 100px); /* Set the number of columns to 20 */
+    grid-template-rows: repeat(3, 100px); /* Set the number of rows to 3 and the height of each row */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
