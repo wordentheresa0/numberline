@@ -1,5 +1,5 @@
 .app {
-  background-image: 'bikini_bottom.png';
+  background-image: url('https://imgix.bustle.com/fatherly/2018/06/bikini-bottom.jpg?w=1200&h=630&fit=crop&crop=faces&fm=jpg');
   background-size: cover;
   height: 100vh;
   display: flex;
@@ -9,5 +9,5 @@
 }
 
 h1 {
-  color: #fff; /* Set your desired text color */
+  color: #fff;
 }
