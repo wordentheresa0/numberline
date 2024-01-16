@@ -1,0 +1,43 @@
+.number-line {
+    display: flex;
+    flex-direction: row; /* stack items vertically */
+    align-items: row; 
+    margin-bottom: 100px;
+  }
+  
+  .rect {
+    position: relative;
+    width: 50px;
+    height: 60px;
+    background-color: aqua;
+    border-style: none none solid none;
+    border-width: 5px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .text {
+    position: absolute;
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    align-items: center; /* Center text horizontally */
+    top: 0;
+  }
+  
+  .text div {
+    margin: 10px 0; /* spacing between the stacked text */
+  }
+
+  .tic {
+    position: absolute;
+    top: -20px;
+    width: 7px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: black;
+  }
+
+  .text .tic + div {
+    margin-top: 16px; 
+  }
+  
