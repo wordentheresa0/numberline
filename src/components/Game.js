@@ -3,8 +3,6 @@ import Grid from './Grid';
 import Card from './Card';
 import './Game.css';
 
-
-
 const Game = () => {
 
  // const UserContext = createContext();
@@ -36,23 +34,29 @@ const Game = () => {
     if (parseInt(userAnswer, 10) === correctAnswer) {
       setPosition(correctAnswer);
     }
-    // setIsQuizActive(false);
+    setIsQuizActive(false);
   };
 
   const showQuiz = () => {
-    console.log('Showing quiz!');
+    
+
+
+    // THIS IS WHERE WE NEED TO IMPLEMENT QUIZ
+
+
+
     setIsQuizActive(true);
   };
 
   return (
     <div>
-      <Card
-        drawnCard={drawnCard} onCardDraw={handleCardDraw} isQuizActive={isQuizActive} onQuizSubmit={handleQuizSubmit} setDrawnCard={setDrawnCard} showQuiz={showQuiz}
-      />
       <Grid 
         position={position} setPosition = {setPosition} showQuiz={showQuiz} 
       />
-      {isGameWon && <div className="win-message">Congratulations! You've won! You've saved SpongeBob!!!</div>}
+      <Card
+        drawnCard={drawnCard} onCardDraw={handleCardDraw} isQuizActive={isQuizActive} onQuizSubmit={handleQuizSubmit} setDrawnCard={setDrawnCard} showQuiz={showQuiz}
+      />
+      {/* {isGameWon && <div className="win-message">Congratulations! You've won! You've saved SpongeBob!!!</div>} */}
     </div>
   );
 };

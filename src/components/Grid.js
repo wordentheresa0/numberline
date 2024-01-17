@@ -33,7 +33,13 @@ const Grid = () => {
           onClick={() => handleSquareClick(index)}
         />
       ))}
-       {isGameWon && <div className="win-message">Congratulations! You've won! You've saved SpongeBob!!!</div>}
+       {isGameWon && <div className="win-message">
+       <img
+            src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/05/SpongeBob-and-Patrick-Featured-Image.jpg"
+            alt="Sample"
+            style={{ height: '35%', width: '35%', marginLeft: '700px', marginBottom: '200px' }}
+          />
+        </div>}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Card = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: '-400px' }}>
       <div className="e-card e-card-horizontal" style={{ width: '200px' }}>
         <div style={{ height: '175px' }}>
           <img
