@@ -15,21 +15,26 @@ const Card = () => {
   const [drawnCard, setDrawnCard] = useState(null);
 
   const handleButtonClick = () => {
-    // Generate a random number between -9 and 9
-    const randomCard = Math.floor(Math.random() * 19) - 9;
-    
-    // Update the state with the drawn card value
-    setDrawnCard(randomCard);
+    while (true) {
+      const randomCard = Math.floor(Math.random() * 19) - 9;
+      const filter = Math.floor(Math.random() * 2); // Generate filter inside the loop
+      
+      if (randomCard > 0 || (randomCard <= 0 && filter)) {
+        setDrawnCard(randomCard);
+        break; // Exit the loop if a valid card is drawn
+      }
+    }
   };
+  
 
   return (
-    <div style={{ margin: `50px`, display: `flex`, flexDirection: `row`, justifyContent: `center` }}>
+    <div style={{ margin: `0px`, display: `flex`, flexDirection: `row`, justifyContent: `center` }}>
       <div className="e-card e-card-horizontal" style={{ width: `200px` }}>
         <div style={{ height: '175px' }}>
           <img
             src="https://static.wikia.nocookie.net/spongebob/images/9/98/Blue_Jellyfish.png"
             alt="Sample"
-            style={{ height: `100%`, width: 'auto' }}
+            style={{ height: `100%`, width: 'auto', paddingLeft: '30px' }}
           />
         </div>
         <div className="e-card">
@@ -40,7 +45,7 @@ const Card = () => {
           </div>
         </div>
         {drawnCard !== null && (
-          <div className="e-card" style={{ backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center' }}>
+          <div className="e-card" style={{ backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center',  width: '20%' }}>
             <p>{drawnCard}</p>
           </div>
         )}

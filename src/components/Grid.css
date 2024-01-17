@@ -6,4 +6,12 @@
     align-items: center;
     height: 100vh;
   }
+
+  .win-message {
+    font-size: 24px; /* Adjust the font size as needed */
+    text-align: center;
+    margin-top: 20px;
+    color: #5f2ec9;
+    font-weight: bold;
+  }
   
