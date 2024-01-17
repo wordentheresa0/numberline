@@ -45,7 +45,7 @@ const Card = () => {
         </div>
       </div>
       {drawnCard !== null && (
-        <div className="e-card" style={{ backgroundColor: 'white', width: '100px', height: '100px', fontSize: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div className="e-card" style={{ backgroundColor: '#80e8e8', width: '100px', height: '100px', fontSize: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p>{drawnCard}</p>
         </div>
       )}
