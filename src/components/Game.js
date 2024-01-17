@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import Grid from './Grid';
 import Card from './Card';
 import './Game.css';
+import { useState, createContext, useContext } from "react";
+import ReactDOM from "react-dom/client";
+
+
 
 const Game = () => {
+
+  const UserContext = createContext();
+
   const [drawnCard, setDrawnCard] = useState(null);
   const [position, setPosition] = useState(1);
   const [isGameWon, setIsGameWon] = useState(false);
