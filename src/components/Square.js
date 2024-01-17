@@ -19,7 +19,7 @@ const Square = ({ text, isCurrent, onClick }) => {
 
   return (
     <div className="square" style={squareStyle} onClick={onClick}>
-      <h1>{text}</h1>
+      <h1 style={{textAlign: 'center'}}>{text}</h1>
     </div>
   );
 };

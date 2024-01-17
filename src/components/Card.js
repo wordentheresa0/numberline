@@ -25,16 +25,15 @@ const Card = () => {
       }
     }
   };
-  
 
   return (
-    <div style={{ margin: `0px`, display: `flex`, flexDirection: `row`, justifyContent: `center` }}>
-      <div className="e-card e-card-horizontal" style={{ width: `200px` }}>
+    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="e-card e-card-horizontal" style={{ width: '200px' }}>
         <div style={{ height: '175px' }}>
           <img
             src="https://static.wikia.nocookie.net/spongebob/images/9/98/Blue_Jellyfish.png"
             alt="Sample"
-            style={{ height: `100%`, width: 'auto', paddingLeft: '30px' }}
+            style={{ height: '100%', width: 'auto', paddingLeft: '30px' }}
           />
         </div>
         <div className="e-card">
@@ -44,14 +43,14 @@ const Card = () => {
             </button>
           </div>
         </div>
-        {drawnCard !== null && (
-          <div className="e-card" style={{ backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center',  width: '20%' }}>
-            <p>{drawnCard}</p>
-          </div>
-        )}
       </div>
+      {drawnCard !== null && (
+        <div className="e-card" style={{ backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center', width: '20%' }}>
+          <p>{drawnCard}</p>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default Card;
