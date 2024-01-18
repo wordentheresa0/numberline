@@ -13,19 +13,4 @@ const App = () => {
   );
 };
 
-// eslint-disable-next-line
-const App2 = () => {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ marginBottom: '20px' }}>
-        <h1>Bikini Bottom Number Line</h1>
-        <Grid />
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Card />
-      </div>
-    </div>
-  );
-};
-
 export default App;
