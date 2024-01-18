@@ -17,24 +17,32 @@ const Card = ( {position, setPosition, isGameWon, setIsGameWon} ) => {
   //const [isGameWon, setIsGameWon] = useState(false);
 
   const handleButtonClick = () => {
+    if (isGameWon) {
+      return;
+    }
+    
     while (true) {
       const randomCard = Math.floor(Math.random() * 19) - 9;
-      const filter = Math.floor(Math.random() * 2); 
-      
-      if ((randomCard > 0 || (randomCard <= 0 && filter)) && (randomCard + position > 0) && (randomCard + position <= 30) && (randomCard !== 0)) {
+      const filter = Math.floor(Math.random() * 2);
+  
+      if (
+        randomCard + position > 0 &&
+        randomCard + position <= 30 &&
+        randomCard !== 0
+      ) {
         setDrawnCard(randomCard);
-
-        let problem = `${position} + ${randomCard} = ???`;
+  
+        const problem = `${position} + ${randomCard} = ???`;
         setMathProb(problem);
-        let answer = position + randomCard;
+        const answer = position + randomCard;
         setPosition(answer);
-
-        // if(answer === 30) {
-        //   setIsGameWon(true);
-        //   mathProb = null
-        // }
-
-        break; 
+  
+        if (answer === 30) {
+          setIsGameWon(true);
+          setMathProb(null);
+        }
+  
+        break;
       }
     }
   };
