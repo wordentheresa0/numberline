@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Card.css';
 
-const Card = ( {position, setPosition, isGameWon, setIsGameWon} ) => {
+const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
   const commonStyles = {
     fontSize: '25px',
     color: '#5f2ec9',
@@ -14,38 +14,43 @@ const Card = ( {position, setPosition, isGameWon, setIsGameWon} ) => {
 
   const [drawnCard, setDrawnCard] = useState(null);
   const [mathProb, setMathProb] = useState('');
-  //const [isGameWon, setIsGameWon] = useState(false);
 
   const handleButtonClick = () => {
     if (isGameWon) {
+      setDrawnCard(null);
       return;
     }
-    
+
     while (true) {
       const randomCard = Math.floor(Math.random() * 19) - 9;
       const filter = Math.floor(Math.random() * 2);
-  
-      if (
-        randomCard + position > 0 &&
-        randomCard + position <= 30 &&
-        randomCard !== 0
-      ) {
+
+      if (randomCard + position > 0 && randomCard + position <= 30 && randomCard !== 0) {
         setDrawnCard(randomCard);
-  
+
         const problem = `${position} + ${randomCard} = ???`;
         setMathProb(problem);
         const answer = position + randomCard;
         setPosition(answer);
-  
+
         if (answer === 30) {
           setIsGameWon(true);
           setMathProb(null);
         }
-  
+
         break;
       }
     }
+
+    if (isGameWon) {
+      setDrawnCard(null);
+      return;
+    }
   };
+
+  if (isGameWon) {
+    return null; // Don't render anything if the game is won
+  }
 
   return (
     <div style={{ margin: `0px`, display: `flex`, flexDirection: `row`, justifyContent: `center`, marginTop: '-400px' }}>
