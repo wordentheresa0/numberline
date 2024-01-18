@@ -51,10 +51,10 @@ const Game = () => {
   return (
     <div>
       <Grid 
-        position={position} setPosition = {setPosition} showQuiz={showQuiz} 
+        position={position} setPosition = {setPosition} showQuiz={showQuiz} isGameWon={isGameWon} setIsGameWon={setIsGameWon}
       />
       <Card
-        drawnCard={drawnCard} onCardDraw={handleCardDraw} isQuizActive={isQuizActive} onQuizSubmit={handleQuizSubmit} setDrawnCard={setDrawnCard} showQuiz={showQuiz}
+        position={position} setPosition={setPosition} isGameWon={isGameWon} setIsGameWon={setIsGameWon}//drawnCard={drawnCard} onCardDraw={handleCardDraw} isQuizActive={isQuizActive} onQuizSubmit={handleQuizSubmit} setDrawnCard={setDrawnCard} showQuiz={showQuiz} position={position} setPosition={setPosition}
       />
       {/* {isGameWon && <div className="win-message">Congratulations! You've won! You've saved SpongeBob!!!</div>} */}
     </div>
