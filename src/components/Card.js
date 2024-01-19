@@ -28,14 +28,23 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
       if (randomCard + position > 0 && randomCard + position <= 30 && randomCard !== 0) {
         setDrawnCard(randomCard);
 
-        const problem = `${position} + ${randomCard} = ???`;
+        let problem = `${position} + ${randomCard} = ???`;
         setMathProb(problem);
-        const answer = position + randomCard;
+        let answer = position + randomCard;
         setPosition(answer);
 
         if (answer === 30) {
           setIsGameWon(true);
           setMathProb(null);
+        }
+
+        // if position is greater than or equal to 24, then the math set drawn card to 30-position
+        if (position >= 24) {
+          setDrawnCard(30-position);
+          problem = `${position} + ${30-position} = ???`;
+          setMathProb(problem);
+          setPosition(30);
+          answer = 30;
         }
 
         break;
