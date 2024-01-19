@@ -12,7 +12,7 @@ export default function PopupGfg() {
 					close => (
 						<div className='modal'>
 							<div className='content'>
-                <h1 style={{fontWeight: 'bold'}}>
+                <h1 style={{fontWeight: 'bold', color: 'black'}}>
                   How to Play Bikini Bottom Number Line
                 </h1>
                 <h3 style={{fontWeight:'normal'}}>Purpose: Learning how to add and subtract while using a numberline.</h3>
