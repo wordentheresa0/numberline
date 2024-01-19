@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Grid from './Grid';
 import Card from './Card';
+import Popup from './Popup'
 import './Game.css';
 
 const Game = () => {
@@ -50,6 +51,7 @@ const Game = () => {
 
   return (
     <div>
+      <Popup />
       <Grid 
         position={position} setPosition = {setPosition} showQuiz={showQuiz} isGameWon={isGameWon} setIsGameWon={setIsGameWon}
       />
