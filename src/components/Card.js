@@ -14,9 +14,11 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
 
   const [drawnCard, setDrawnCard] = useState(null);
   const [mathProb, setMathProb] = useState('');
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false); // State to control button disable/enable
+  const [isPatrickInCorrectSpot, setIsPatrickInCorrectSpot] = useState(false); // State to track Patrick's position
 
   const handleButtonClick = () => {
-    if (isGameWon) {
+    if (isGameWon || isButtonDisabled) {
       setDrawnCard(null);
       return;
     }
@@ -36,29 +38,30 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
         if (answer === 30) {
           setIsGameWon(true);
           setMathProb(null);
+          setIsButtonDisabled(true); 
+        } else {
+          setIsButtonDisabled(true); 
         }
 
-        // if position is greater than or equal to 24, then the math set drawn card to 30-position
+        // if position is greater than or equal to 24, then set Patrick to the correct spot
         if (position >= 24) {
-          setDrawnCard(30-position);
-          problem = `${position} + ${30-position} = ???`;
-          setMathProb(problem);
-          setPosition(30);
-          answer = 30;
+          setIsPatrickInCorrectSpot(true);
+          setIsButtonDisabled(false); 
+        }
+
+
+        if (position === 30) {
+          setIsPatrickInCorrectSpot(false);
+          setIsButtonDisabled(true);
         }
 
         break;
       }
     }
-
-    if (isGameWon) {
-      setDrawnCard(null);
-      return;
-    }
   };
 
   if (isGameWon) {
-    return null; // Don't render anything if the game is won
+    return null; 
   }
 
   return (
@@ -73,7 +76,7 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
         </div>
         <div className="e-card">
           <div className="e-card-actions e-card-vertical">
-            <button className="e-card-btn" style={{ ...commonStyles }} onClick={handleButtonClick}>
+            <button className="e-card-btn" style={{ ...commonStyles }} onClick={handleButtonClick} disabled={isButtonDisabled}>
               Draw!!!
             </button>
           </div>
@@ -86,6 +89,15 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
         {mathProb && (
           <div className="e-card" style={{ ...commonStyles, backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center', width: '110px', marginLeft: '200px', fontSize: '20px' }}>
             <p>{mathProb}</p>
+          </div>
+        )}
+        {isPatrickInCorrectSpot && (
+          <div className="e-card" style={{ ...commonStyles, backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center', width: '110px', marginLeft: '200px', fontSize: '20px' }}>
+            <img
+              src="https://static.wikia.nocookie.net/spongebob/images/9/98/Blue_Jellyfish.png"
+              alt="Patrick"
+              style={{ height: '80px', width: 'auto' }}
+            />
           </div>
         )}
       </div>
