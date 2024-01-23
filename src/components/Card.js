@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Card.css';
 
-const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
+const Card = ({ position, setPosition, isGameWon, setIsGameWon, drawnCard, setDrawnCard}) => {
   const commonStyles = {
     fontSize: '25px',
     color: '#5f2ec9',
@@ -12,8 +12,9 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
     justifyContent: 'center'
   };
 
-  const [drawnCard, setDrawnCard] = useState(null);
   const [mathProb, setMathProb] = useState('');
+  const [lastIteration, setLastIteration] = useState(false);
+
 
   const handleButtonClick = () => {
     if (isGameWon) {
@@ -28,25 +29,36 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
       if (randomCard + position > 0 && randomCard + position <= 30 && randomCard !== 0) {
         setDrawnCard(randomCard);
 
-        let problem = `${position} + ${randomCard} = ???`;
-        setMathProb(problem);
-        let answer = position + randomCard;
-        setPosition(answer);
-
-        if (answer === 30) {
-          setIsGameWon(true);
-          setMathProb(null);
+        let problem = '';
+        if (randomCard < 0) {
+          let randCard = randomCard.toString();
+          randCard = randCard.substring(1);
+          problem = `${position} - ${randCard} = ???`;
+        }
+        else {
+          problem = `${position} + ${randomCard} = ???`;
         }
 
-        // if position is greater than or equal to 24, then the math set drawn card to 30-position
+        setMathProb(problem);
+        let answer = position + randomCard;
+        // setPosition(answer);
+
+        if (answer === 30 && position < 24) {
+          setLastIteration(true);
+          break;
+        }
+
         if (position >= 24) {
-          setDrawnCard(30-position);
-          problem = `${position} + ${30-position} = ???`;
+          setDrawnCard(30 - position);
+          problem = `${position} + ${30 - position} = ???`;
           setMathProb(problem);
           setPosition(30);
           answer = 30;
+          setLastIteration(true);
+          break;
         }
 
+        setLastIteration(false);
         break;
       }
     }
@@ -55,10 +67,17 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon }) => {
       setDrawnCard(null);
       return;
     }
+
+    if (lastIteration) {
+      setIsGameWon(true);
+      setMathProb(null);
+    }
+
+    console.log('position:', position);
   };
 
   if (isGameWon) {
-    return null; // Don't render anything if the game is won
+    return null; 
   }
 
   return (
