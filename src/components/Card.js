@@ -14,10 +14,12 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon, drawnCard, setDr
 
   const [mathProb, setMathProb] = useState('');
   const [lastIteration, setLastIteration] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isPatrickInCorrectSpot, setIsPatrickInCorrectSpot] = useState(false); 
 
 
   const handleButtonClick = () => {
-    if (isGameWon) {
+    if (isGameWon || isButtonDisabled) {
       setDrawnCard(null);
       return;
     }
@@ -92,7 +94,7 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon, drawnCard, setDr
         </div>
         <div className="e-card">
           <div className="e-card-actions e-card-vertical">
-            <button className="e-card-btn" style={{ ...commonStyles }} onClick={handleButtonClick}>
+            <button className="e-card-btn" style={{ ...commonStyles }} onClick={handleButtonClick} disabled={isButtonDisabled}>
               Draw!!!
             </button>
           </div>
@@ -105,6 +107,15 @@ const Card = ({ position, setPosition, isGameWon, setIsGameWon, drawnCard, setDr
         {mathProb && (
           <div className="e-card" style={{ ...commonStyles, backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center', width: '110px', marginLeft: '200px', fontSize: '20px' }}>
             <p>{mathProb}</p>
+          </div>
+        )}
+        {isPatrickInCorrectSpot && (
+          <div className="e-card" style={{ ...commonStyles, backgroundColor: 'white', margin: '10px', padding: '10px', textAlign: 'center', width: '110px', marginLeft: '200px', fontSize: '20px' }}>
+            <img
+              src="https://static.wikia.nocookie.net/spongebob/images/9/98/Blue_Jellyfish.png"
+              alt="Patrick"
+              style={{ height: '80px', width: 'auto' }}
+            />
           </div>
         )}
       </div>
